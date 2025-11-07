@@ -1,0 +1,31 @@
+# Fichiers Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# PyGame cache
+*.egg-info/
+.eggs/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers de configuration locaux
+config.local.py
+settings.local.py
+
+# Logs
+*.log
+logs/
+
+# Fichiers temporaires
+*.tmp
+*.temp
