@@ -113,3 +113,6 @@ Ce projet est développé en Python avec Pygame et présente:
 
 ---
 **Amusez-vous bien!** 🎮
+<img width="789" height="631" alt="game1" src="https://github.com/user-attachments/assets/648f796a-2080-4ff5-a457-3c345479f607" />
+<img width="803" height="627" alt="game2" src="https://github.com/user-attachments/assets/ef4447dc-5c5b-4371-98a2-638e8fe346c8" />
+
