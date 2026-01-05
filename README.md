@@ -1,118 +1,55 @@
-# 🎮 Jeu avec IA - Évite les Obstacles
+# Jeu Multi IA - Evite les obstacles
 
-Un jeu Python/Pygame où vous contrôlez un personnage qui doit éviter des obstacles tombants, avec une IA intelligente qui peut jouer automatiquement.
+Petit jeu Python/Pygame où 1 ou 2 joueurs esquivent des blocs qui tombent. Chaque joueur peut être contrôlé manuellement ou par l'IA en un clic. Tir à distance, power-ups et difficulté progressive.
 
-## 🚀 Fonctionnalités
-
-- **🎯 Deux modes de jeu**: Manuel ou IA automatique
-- **🤖 IA intelligente** qui évite les obstacles et chase les power-ups
-- **⚡ Système de power-ups**: Vitesse, Bouclier, Points bonus
-- **📈 Niveaux de difficulté** progressive
-- **🏆 Système de score** en temps réel
-- **🎨 Interface colorée** avec effets visuels
-
-## 🎯 Contrôles
-
-- **← → ↑ ↓**: Déplacer le joueur (mode manuel)
-- **A**: Activer/désactiver le mode IA
-- **ESPACE**: Redémarrer après Game Over
-- **Q**: Quitter le jeu
-
-## 🛠️ Installation
-
-1. **Cloner ou télécharger** les fichiers du projet
-2. **Installer les dépendances**:
-   ```bash
-   pip install pygame
-   ```
-3. **Lancer le jeu**:
-   ```bash
-   python main.py
-   ```
-
-## 📁 Structure du Projet
-
-```
-pygame_ai_game/
-├── main.py          # Point d'entrée du jeu
-├── game.py          # Logique principale du jeu
-├── player.py        # Classe du joueur
-├── obstacle.py      # Classe des obstacles
-├── ai.py           # Intelligence artificielle
-├── powerup.py      # Système de power-ups
-└── requirements.txt # Dépendances
+## Installation
+```bash
+python -m venv .venv
+.\.venv\Scripts\activate   # Windows
+pip install -r requirements.txt
+python main.py
 ```
 
-## 🎮 Comment Jouer
+## Menu principal (cliquable)
+- Bouton 1 Joueur / 2 Joueurs : choisit le nombre de joueurs (J2 désactivé en solo).
+- Bouton IA auto : active l'IA pour tous au lancement.
+- Bouton Musique : coupe/remet le son (musique + FX).
+- Bouton Start : lance la partie après tes choix.
+- Options (touche O) : remap touches, volumes Musique/FX, IA auto, mute.
 
-### Mode Manuel
-- Utilisez les flèches pour déplacer le carré bleu
-- Évitez les obstacles rouges qui tombent
-- Attrapez les power-ups pour obtenir des bonus
+## Commandes en jeu
+- Joueur 1 : flèches. Tir : `Ctrl` droit.
+- Joueur 2 : ZQSD. Tir : `E`.
+- IA : `1` ou `2` pour basculer l'IA de chaque joueur; `TAB` ou `T` pour tous.
+- Pause : `P`. Mute : `M`. Quitter : `Échap`.
+- Game over : `Espace` pour relancer.
 
-### Mode IA
-- Appuyez sur **A** pour activer l'IA
-- Observez l'IA jouer intelligemment
-- L'IA analyse les dangers et prend des décisions stratégiques
+## Power-ups et tirs
+- SPD : vitesse x2 (5s).
+- SHD : bouclier (absorbe un choc).
+- +50 : points bonus.
+- SLOW : ralenti global temporaire.
+- ZAP : supprime l'obstacle le plus proche.
+- AMMO : +5 balles (munitions).
+- Tirs : chaque joueur a 3 balles de base; un tir qui touche détruit l'obstacle et donne +1 point.
 
-## 🎁 Power-ups
+## IA : fonctionnement
+- Priorise l'esquive des obstacles immédiats/proches, sinon se place au centre.
+- Peut être forcée on/off par joueur (`1`/`2`) ou pour tous (`TAB`/`T`).
+- Option IA auto (menu ou options) : active l'IA des deux joueurs au démarrage.
+- Marge d'erreur IA : premier choc sans bouclier consomme un hit de grâce (affiche "Hits IA" dans le HUD).
 
-- **⚡ Vitesse** (Jaune): Double la vitesse du joueur pendant 5 secondes
-- **🛡️ Bouclier** (Cyan): Protège des obstacles pendant 8 secondes
-- **⭐ Points** (Vert): +50 points instantanés
+## Gameplay et progression
+- Obstacles plus rapides et nombreux au fil du temps; fonds de couleur cyclent par niveau.
+- Joueurs deviennent circulaires à partir du niveau 2.
+- Score par joueur + high score persistant (`highscore.json`).
 
-## 🤖 Fonctionnalités de l'IA
+## Fichiers importants
+- `main.py` lance le jeu.
+- `game.py` logique principale, menu, sons, particules, collisions.
+- `player.py` déplacements, tirs, IA toggle, bouclier/vitesse.
+- `ai.py` décisions de l'IA.
+- `powerup.py` définitions des power-ups (dont AMMO).
+- `assets/` sons et sprites (optionnels).
 
-L'IA améliorée possède:
-- **Détection multi-niveaux** des dangers
-- **Analyse de trajectoire** prédictive
-- **Évaluation de sécurité** des mouvements
-- **Gestion des priorités** intelligente
-- **Planification stratégique** des déplacements
-
-## 🎯 Objectif
-
-- Survivre le plus longtemps possible
-- Atteindre un score élevé
-- Monter de niveau en évitant les obstacles
-- Observer les performances de l'IA
-
-## 🔧 Dépendances
-
-- Python 3.6+
-- Pygame 2.5.2
-
-## 📊 Niveaux de Difficulté
-
-La difficulté augmente automatiquement:
-- **Niveau 1**: Vitesse normale
-- **Niveau 2+**: Obstacles plus rapides et plus fréquents
-- **Toutes les 30 secondes**: Nouveau niveau
-
-## 🐛 Dépannage
-
-Si vous rencontrez des erreurs:
-1. Vérifiez que Pygame est installé: `pip list | grep pygame`
-2. Assurez-vous que tous les fichiers sont dans le même dossier
-3. Vérifiez que vous utilisez Python 3.6+
-
-## 👨‍💻 Développement
-
-Ce projet est développé en Python avec Pygame et présente:
-- Architecture orientée objet
-- Code modulaire et réutilisable
-- IA avec algorithmes de décision
-- Système de jeu équilibré
-
-## 📝 Notes
-
-- L'IA peut toujours perdre - c'est normal et montre que le jeu est bien équilibré
-- Le bouclier vous protège temporairement des obstacles
-- La vitesse boostée vous aide à éviter plus facilement
-- Plus vous survivez longtemps, plus le jeu devient difficile
-
----
-**Amusez-vous bien!** 🎮
-<img width="789" height="631" alt="game1" src="https://github.com/user-attachments/assets/648f796a-2080-4ff5-a457-3c345479f607" />
-<img width="803" height="627" alt="game2" src="https://github.com/user-attachments/assets/ef4447dc-5c5b-4371-98a2-638e8fe346c8" />
-
+Bon jeu !
