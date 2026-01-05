@@ -29,3 +29,7 @@ logs/
 # Fichiers temporaires
 *.tmp
 *.temp
+
+# Environnement local et scores
+.venv/
+highscore.json
